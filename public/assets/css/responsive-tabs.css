@@ -1,0 +1,64 @@
+@media (min-width: 768px) {
+    .responsive-tabs .dropdown-arrow {
+        display: none; 
+    } 
+}
+
+@media screen and (max-width: 767px) {
+    .responsive-tabs {
+        position: relative; 
+        border: none;
+        border-radius: 10px;
+        margin-right: 24px;
+    }
+    .responsive-tabs.open {
+        border: 1px solid #ff7446;
+     }
+    .responsive-tabs li {
+        width: 100%; 
+        margin: 0 !important;
+        border: none;
+    }
+    .responsive-tabs li > a {
+        display: none; 
+        border: 0 !important; 
+        border-radius: 0 !important;
+    }
+    .responsive-tabs > ul > li {
+        padding: 0 !important;
+    }
+    .responsive-tabs.open li > a, .responsive-tabs li.active a{
+        display: block;
+    }
+    .responsive-tabs .active > a {
+        color: #ffffff !important;
+    }
+    .responsive-tabs .dropdown-arrow { 
+        position: absolute;
+        top: 11px;
+        right: 15px; 
+        border: solid #ffffff;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+        vertical-align: middle;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transition: all ease .5s;
+        cursor: pointer; 
+    }
+    .responsive-tabs.open .dropdown-arrow {
+        transform: rotate(-135deg);
+        transition: all ease .5s;
+        top: 12px;
+    }
+    .responsive-tabs.open #item-category .list-item:hover {
+        border: none;
+    }
+    .responsive-tabs.open #item-category .list-item.active {
+        border: none;
+    }
+    .responsive-tabs #item-category .list-item.active {
+        padding: 5px 10px !important;
+     }
+}  

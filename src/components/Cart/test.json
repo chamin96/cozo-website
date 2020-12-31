@@ -1,0 +1,45 @@
+
+
+{
+    "favourites": [
+        {
+            "_id": "5fe4be2453f9475ee4e61d2f",
+            "product": {
+                "colors": [
+                    "red",
+                    "blue",
+                    "black"
+                ],
+                "favourites": 1,
+                "images": [
+                    "test",
+                    "test",
+                    "test"
+                ],
+                "accepted": true,
+                "_id": "5fe474d25e4d0327ee330616",
+                "name": "test",
+                "description": "test",
+                "category": {
+                    "sub_categories": [
+                        "lamp23"
+                    ],
+                    "_id": "5fdf7916e199d541c4f67733",
+                    "name": "test",
+                    "image": "test",
+                    "__v": 3
+                },
+                "stock": 12,
+                "amount": 1000,
+                "vendor": {
+                    "_id": "5fe35f6e5f228b3ed4b21e9c",
+                    "name_of_business": "test"
+                },
+                "created_at": "2020-12-24T11:00:34.600Z",
+                "status": "Featured",
+                "sale": 100,
+                "__v": 0
+            }
+        }
+    ]
+}
