@@ -21,12 +21,22 @@ export const SubHeader = (props) => {
             </li>
             <li className="hide-li">
               <img src="assets/icons/connect-to-professionals.svg" />
-              <a href="professionals.html">Connect to a professional</a>
+              <Link
+                to={{
+                  pathname: "/",
+                  state: "professional",
+                }}>
+                Connect to a professional
+              </Link>
             </li>
             <li className="responsive-icon">
-              <a href="professionals.html">
+              <Link
+                to={{
+                  pathname: "/",
+                  state: "professional",
+                }}>
                 <i className="icon icon-connect-professionals"></i>
-              </a>
+              </Link>
             </li>
             <li className="mr-auto"></li>
             <li className="nav-menu-2-item-1">
@@ -38,7 +48,7 @@ export const SubHeader = (props) => {
               </a>
             </li>
             <li className="nav-menu-2-item-2">
-              <a href="join-as-professionals.html">Join as a professional</a>
+              <Link to="/join-as-professional">Join as a professional</Link>
             </li>
             <li className="responsive-icon">
               <a href="join-as-vendors.html">

@@ -2,7 +2,7 @@ import { AUTHENTICATED, IS_FETCHING, DONE_FETCHING } from "../Actions/ActionType
 
 const initialState = {
   isFetching: false,
-  authenticated: null,
+  authenticated: false,
 };
 
 export default function (state = initialState, action) {

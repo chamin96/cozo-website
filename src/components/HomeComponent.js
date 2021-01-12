@@ -1,11 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Fragment } from "react";
+import { withRouter, Link } from "react-router-dom";
 import { SubHeader } from "./SubHeader";
 import { Categories } from "../components/Home/Categories";
 import { ProductCarousel } from "./Home/ProductCarousel";
+import { Professionals } from "./Professionals";
 
 class HomeComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filterObj: null,
+    };
+  }
+
+  handleFilters = (data) => {
+    this.setState({ filterObj: data });
+  };
+
   render() {
+    const { match, location, history } = this.props;
     return (
       <div>
         <SubHeader />
@@ -26,105 +39,22 @@ class HomeComponent extends React.Component {
               </div>
             </div>
           </section>
-
-          <Categories />
-
-          <div
-            id="filterOptions"
-            className="container aos-init aos-animate pad-l-b">
-            <div className="row">
-              <div className="col-lg-2 col-md-6 align-items-stretch h-middle">
-                <div className="bold pad-s-b">Category</div>
-                <div className="dropdown">
-                  <button
-                    type="button"
-                    className="btn btn-primary dropdown-toggle"
-                    data-toggle="dropdown">
-                    Bedroom
-                  </button>
-                  <div className="dropdown-menu">
-                    <a className="dropdown-item" href="#">
-                      Link 1
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Link 2
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Link 3
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-2 col-md-6 align-items-stretch h-middle">
-                <div className="bold pad-s-b">Shop</div>
-                <div className="dropdown">
-                  <button
-                    type="button"
-                    className="btn btn-primary dropdown-toggle"
-                    data-toggle="dropdown">
-                    Shop
-                  </button>
-                  <div className="dropdown-menu">
-                    <a className="dropdown-item" href="#">
-                      Link 1
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Link 2
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Link 3
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-2 col-md-6 align-items-stretch h-middle">
-                <div className="bold pad-s-b">Color</div>
-                <div className="dropdown">
-                  <button
-                    type="button"
-                    className="btn btn-primary dropdown-toggle"
-                    data-toggle="dropdown">
-                    Color
-                  </button>
-                  <div className="dropdown-menu">
-                    <a className="dropdown-item" href="#">
-                      Link 1
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Link 2
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Link 3
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 align-items-stretch h-middle">
-                <div className="bold pad-s-b">Price Range</div>
-                <input
-                  id="ex2"
-                  type="text"
-                  className="span2"
-                  value=""
-                  data-slider-min="10"
-                  data-slider-max="1000"
-                  data-slider-step="5"
-                  data-slider-value="[250,450]"
-                />
-              </div>
-              <div className="col-lg-2 col-md-6 align-items-stretch h-middle">
-                <div className="bold pad-s-b">Filter by AR</div>
-                <div className="icon icon-AR"></div>
-              </div>
-            </div>
-          </div>
+          {location.state != "professional" ? (
+            <Categories filters={this.handleFilters} />
+          ) : (
+            <Fragment />
+          )}
 
           <section id="" className="carousel-wrap">
             <div className="container">
               <div className="row">
                 <div className="col-lg-12 align-items-stretch video-box">
                   <div className="bourse-slider arrows--lg slick-slider pos-rel">
-                  <ProductCarousel />
+                    {location.state != "professional" ? (
+                      <ProductCarousel filterOptions={this.state.filterObj} />
+                    ) : (
+                      <Professionals />
+                    )}
                   </div>
                 </div>
               </div>
@@ -151,4 +81,4 @@ class HomeComponent extends React.Component {
   }
 }
 
-export default HomeComponent;
+export default withRouter(HomeComponent);

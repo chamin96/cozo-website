@@ -3,14 +3,40 @@ import { Link } from "react-router-dom";
 import { getAllProducts } from "../../api/action/ProductAction";
 
 export const ProductCarousel = (props) => {
+  const { filterOptions, params } = props;
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     getAllProducts().then((res) => {
-      console.log("prod", res.data);
       setProducts(res.data.products);
     });
   }, []);
+
+  useEffect(() => {
+    if (filterOptions != null) {
+      let obj = {};
+
+      if (filterOptions.category) {
+        obj.category = filterOptions.category;
+      }
+
+      if (filterOptions.vendor) {
+        obj.vendor = filterOptions.vendor;
+      }
+
+      if (filterOptions.color) {
+        obj.color = filterOptions.color;
+      }
+
+      if (filterOptions.price_from) {
+        obj.price_from = filterOptions.price_from;
+        obj.price_to = filterOptions.price_to;
+      }
+      getAllProducts(obj).then((res) => {
+        setProducts(res.data.products);
+      });
+    }
+  }, [filterOptions]);
 
   const renderProducts = (data) => {
     if (data != undefined) {

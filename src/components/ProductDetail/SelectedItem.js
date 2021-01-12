@@ -1,26 +1,39 @@
 import React, { Fragment, useEffect, useState } from "react";
-import axios from "axios";
-import { getProductById } from "../../api/action/ProductAction";
+import { useHistory } from "react-router";
+import { useParams, useLocation } from "react-router-dom";
+import { addToCart } from "../../api/action/ProductAction";
 import { ExploreFeatures } from "./ExploreFeatures";
+import { useSelector } from "react-redux";
 
 export const SelectedItem = (props) => {
-  const { product, locationParams } = props;
+  const { productDetails, locationParams } = props;
+  let location = useLocation();
+  const history = useHistory();
+  const auth = useSelector(state => state.user.authenticated);
   const [stockAmount, setStockAmount] = useState(1);
-  // const [product, setProduct] = useState([]);
 
-  const addToCart = () => {
+  const handleAddToCart = () => {
     let obj = {
-        "id": locationParams.state,
-        "color": "red",
-        "amount": 2
+      "id": location.state,
+      "color": "red",
+      "amount": stockAmount
+  }
+
+    if (auth) {
+      addToCart(obj).then(res => {
+        if (res) {
+          history.push({
+            pathname: "/cart",
+            state: {category: 'auth'}
+          });
+        }
+      })
+    } else {
+      history.push({
+        pathname: "/checkout",
+        state: {product : productDetails, category: 'unAuth', qty: stockAmount }
+      });
     }
-
-  //   axios.post(`${process.env.REACT_APP_API_URL}/cart`, data, {
-  //     headers: {
-  //         Authorization: localStorage.access_token
-  //     }
-  // })
-
   };
 
   const handleCount = (option) => {
@@ -32,7 +45,7 @@ export const SelectedItem = (props) => {
       }
     }
   };
-  console.log("props", product);
+
   return (
     <section id="selectedItem" className="home">
       <div className="container">
@@ -76,20 +89,20 @@ export const SelectedItem = (props) => {
 
             <div className="col-lg-5">
               <div className="layout-container bold font-x-large pad-m-b">
-              Canby Queen Futon Frame, Warm Cherry
+              {productDetails?.product?.name}
               </div>
               <div className="layout-container font-small caption-color">
-                By Chamitha
+                By {productDetails?.product?.vendor?.name_of_business}
               </div>
               <div className="layout-container full-width">
                 <div className="layout-col h-left">
                   <span>
                     <i className="icon icon-star"></i>
                   </span>
-                  <span className="font-small caption-color">(35)</span>
+                  <span className="font-small caption-color">{`(${productDetails.total_rating})`}</span>
                 </div>
                 <div className="layout-col h-left">
-                  <span className="value color bold font-large">$139</span>
+                  <span className="value color bold font-large">${productDetails?.product?.amount}</span>
                 </div>
               </div>
               <div className="layout-container full-width pad-l-t">
@@ -113,7 +126,7 @@ export const SelectedItem = (props) => {
                   </div>
                 </div>
                 <div className="layout-col">
-                  <button className="btn-default" onClick={addToCart}>
+                  <button className="btn-default" onClick={handleAddToCart}>
                     Add to Cart
                   </button>
                 </div>
@@ -130,3 +143,5 @@ export const SelectedItem = (props) => {
     </section>
   );
 };
+
+SelectedItem.defaultProps = {}

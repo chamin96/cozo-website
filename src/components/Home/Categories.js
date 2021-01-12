@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { getCategories } from '../../api/action/ProductAction';
+import { getVendors } from '../../api/action/VendorAction';
+import { Filters } from './Filters';
 
 export const Categories = props => {
+    const { filters } = props;
     const [categories, setCategories] = useState([]);
     const [subCategories, setSubCategories] = useState([]);
+    const [vendors, setVendors] = useState([]);
+    const [visibleFilter, setVisibleFilter] = useState(false);
 
     useEffect(() => {
         getCategories().then((res) => {
@@ -11,14 +16,22 @@ export const Categories = props => {
                 setCategories(res.data.categories)
                 setSubCategories(res.data.categories[0].sub_category);
             }
-        })
+        });
+
+        getVendors().then((res) => {
+          if (res.data.vendors) {
+            setVendors(res.data.vendors);
+          }
+        });
     }, [])
 
     const handleCategories = data => {
         setSubCategories(data)
     }
 
-    const   handleFilter = () => {};
+    const handleFilter = () => {
+      setVisibleFilter(!visibleFilter);
+    };
 
     const renderCategories = data => {
         if (data != undefined) {
@@ -46,7 +59,12 @@ export const Categories = props => {
         }
     }
 
+    const getFilters = data => {
+      filters(data);
+    }
+
     return (
+      <Fragment>
         <section id="category" className="category">
         <div className="container">
           <div className="section-title layout-container full-width">
@@ -83,5 +101,7 @@ export const Categories = props => {
           <div className="category-separator"></div>
         </div>
       </section>
+      {visibleFilter ? <Filters categoriesList={categories} vendorList={vendors} handleFilters={getFilters}/> : <Fragment />}
+      </Fragment>
     )
 }

@@ -19,3 +19,7 @@ export const getWishList = () => {
         }
     });
 }
+
+export const getProfessionals = () => {
+    return axios.get(`${process.env.REACT_APP_API_URL}/customer/professionals`)
+}

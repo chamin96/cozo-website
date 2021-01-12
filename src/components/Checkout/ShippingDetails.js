@@ -20,7 +20,7 @@ export const ShippingDetails = (props) => {
 
     })
   };
-
+console.log("fullName", fullName);
   return (
     <div
       id="shippingDetails"
@@ -36,13 +36,13 @@ export const ShippingDetails = (props) => {
       <div className="layout-container full-width pad-l-t">
         <div className="value-color pad-m-t font-medium pad-s-b">Full Name</div>
         <div>
-          <div action="" method="post" className="mr-auto pos-rel">
+          <div>
             <input
               type="text"
               name="email"
               className="search-box"
               placeholder="Enter your full name"
-              onChange={(e) => setFullName(e)}
+              onChange={(e) => setFullName(e.target.value)}
             />
           </div>
         </div>
@@ -51,13 +51,13 @@ export const ShippingDetails = (props) => {
       <div className="layout-container full-width pad-l-tb">
         <div className="value-color font-medium pad-s-b">Street Name</div>
         <div>
-          <div action="" method="post" className="mr-auto pos-rel">
+          <div>
             <input
               type="text"
               name="email"
               className="search-box"
               placeholder="Enter your street name"
-              onChange={(e) => setStreetName(e)}
+              onChange={(e) => setStreetName(e.target.value)}
             />
           </div>
         </div>
@@ -67,13 +67,13 @@ export const ShippingDetails = (props) => {
         <div className="layout-col">
           <div className="value-color font-medium pad-s-b">House Number</div>
           <div>
-            <div action="" method="post" className="mr-auto pos-rel">
+            <div>
               <input
                 type="text"
                 name="email"
                 className="search-box search-half-width"
                 placeholder="Enter number"
-                onChange={(e) => setHouseNumber(e)}
+                onChange={(e) => setHouseNumber(e.target.value)}
               />
             </div>
           </div>
@@ -81,13 +81,13 @@ export const ShippingDetails = (props) => {
         <div className="layout-col pad-m-l">
           <div className="value-color font-medium pad-s-b">City</div>
           <div>
-            <div action="" method="post" className="mr-auto pos-rel">
+            <div>
               <input
                 type="text"
                 name="email"
                 className="search-box search-half-width"
                 placeholder="Enter your street name"
-                onChange={(e) => setCity(e)}
+                onChange={(e) => setCity(e.target.value)}
               />
             </div>
           </div>
@@ -98,13 +98,13 @@ export const ShippingDetails = (props) => {
         <div className="layout-col">
           <div className="value-color font-medium pad-s-b">Country</div>
           <div>
-            <div action="" method="post" className="mr-auto pos-rel">
+            <div>
               <input
                 type="text"
                 name="email"
                 className="search-box search-half-width"
                 placeholder="Enter country"
-                onChange={(e) => setCountry(e)}
+                onChange={(e) => setCountry(e.target.value)}
               />
             </div>
           </div>
@@ -112,13 +112,13 @@ export const ShippingDetails = (props) => {
         <div className="layout-col pad-m-l">
           <div className="value-color font-medium pad-s-b">Zip Code</div>
           <div>
-            <div action="" method="post" className="mr-auto pos-rel">
+            <div>
               <input
                 type="text"
                 name="email"
                 className="search-box search-half-width"
                 placeholder="Enter zip code"
-                onChange={(e) => setZipCode(e)}
+                onChange={(e) => setZipCode(e.target.value)}
               />
             </div>
           </div>

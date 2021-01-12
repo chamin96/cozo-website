@@ -6,65 +6,67 @@ import { ShippingDetails } from "./ShippingDetails";
 import { getCartData } from "../../api/action/UserAction";
 
 export const CheckoutIndex = (props) => {
+  const { locationParams } = props;
   const [viewPlace, setViewPlace] = useState(1);
   const [cartData, setCartData] = useState([]);
-
+  const [finalParams, setFinalParams] = useState();
+ 
   useEffect(() => {
-      getCartData().then(res => {
-          if (res.data.cart) {
-              setCartData(res.data.cart)
-          }
-      })
-  }, [])
+    if (locationParams.state.view) {
+      setViewPlace(2)
+    }
+  }, [locationParams])
 
   const handleDisplay = (place, params) => {
+    console.log("callBack", params);
       setViewPlace(place);
       handleView(place, params);
+      setFinalParams(params);
   }
 
   const handleView = (data, params) => {
     //return <CheckoutDetails displayNumber={handleDisplay}/>;
     if (data == 1) {
-        return <CheckoutDetails displayNumber={handleDisplay} />;
+        return <CheckoutDetails displayNumber={handleDisplay} otherParams={locationParams.state}/>;
     } else if (data == 2) {
         return <ShippingDetails displayNumber={handleDisplay} otherParams={params}/>;
     } else {
-        return <PaymentDetails />;
+        return <PaymentDetails otherParams={params}/>;
     }
   };
 
   return (
     <main id="main">
-      <section class="login" style={{ padding: "0px 0 60px 0" }}>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 order-1 order-lg-2">
-              <div class="layout-container full-width pad-l-t">
+      <section className="login" style={{ padding: "0px 0 60px 0" }}>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6 order-1 order-lg-2">
+              <div className="layout-container full-width pad-l-t">
                 <div id="msform">
                   {/* progressbar */}
                   <ul id="progressbar">
-                    <li class="active" id="account"></li>
-                    <li id="shipping" class=""></li>
+                    <li className="active" id="account"></li>
+                    <li id="shipping" className=""></li>
                     <li id="payment"></li>
                   </ul>
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 order-1 order-lg-2"></div>
+            <div className="col-lg-6 order-1 order-lg-2"></div>
           </div>
-          <div class="row">
+          <div className="row">
             <div
-              class="col-lg-6 order-1 order-lg-2"
+              className="col-lg-6 order-1 order-lg-2"
               style={{ paddingTop: "100px" }}>
-              {viewPlace == 1 && <CheckoutDetails displayNumber={handleDisplay}/>}
+              {viewPlace == 1 && <CheckoutDetails displayNumber={handleDisplay} otherParams={locationParams.state}/>}
 
-              {viewPlace == 2 && <ShippingDetails displayNumber={handleDisplay}/>}
+              {viewPlace == 2 && <ShippingDetails displayNumber={handleDisplay} otherParams={locationParams.state}/>}
 
-              {viewPlace == 3 && <PaymentDetails displayNumber={handleDisplay}/>}
+              {viewPlace == 3 && <PaymentDetails displayNumber={handleDisplay} otherParams={finalParams}/>}
               {/* {handleView(1)} */}
             </div>
 
-            <MyCart data={cartData}/>
+            <MyCart data={cartData} locationParams={locationParams.state}/>
           </div>
         </div>
       </section>

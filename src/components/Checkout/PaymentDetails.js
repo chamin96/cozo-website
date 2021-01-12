@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import { postCreditCard } from "../../api/action/ProductAction";
 
 export const PaymentDetails = (props) => {
-  const { params } = props;
+  const { otherParams } = props;
   const history = useHistory();
   const [creditCard, setCreditCard] = useState("");
   const [cvv, setCVV] = useState("");
@@ -13,14 +13,18 @@ export const PaymentDetails = (props) => {
   const [zipCode, setZipCode] = useState("");
 
   const handlePayment = () => {
+    console.log("test");
+    let card = {
+      full_name: otherParams,
+      CVV: cvv,
+      date: expiry,
+      number: creditCard,
+    }
+    console.log("card", card);
     let obj = {
-      card: {
-        full_name: params,
-        CVV: cvv,
-        date: expiry,
-        number: creditCard,
-      },
+      card: card
     };
+    console.log("obj", obj);
     postCreditCard(obj).then((res) => {
       if (res.data.message) {
         history.push({
@@ -29,7 +33,7 @@ export const PaymentDetails = (props) => {
       }
     });
   };
-
+console.log("params", otherParams);
   return (
     <div id="payingDetails" className="layout-container full-width">
       <div className="layout-container value-color bold full-width pad-m-t">
@@ -72,7 +76,7 @@ export const PaymentDetails = (props) => {
               name="email"
               className="search-box"
               placeholder="XXXX XXXX XXXX XXXX"
-              onChange={(e) => setCreditCard(e)}
+              onChange={(e) => setCreditCard(e.target.value)}
             />
           </div>
         </div>
@@ -88,7 +92,7 @@ export const PaymentDetails = (props) => {
                 name="email"
                 className="search-box search-half-width"
                 placeholder="Enter number"
-                onChange={(e) => setExpiry(e)}
+                onChange={(e) => setExpiry(e.target.value)}
               />
             </div>
           </div>
@@ -102,7 +106,7 @@ export const PaymentDetails = (props) => {
                 name="email"
                 className="search-box search-half-width"
                 placeholder="Enter your street name"
-                onChange={(e) => setCVV(e)}
+                onChange={(e) => setCVV(e.target.value)}
               />
             </div>
           </div>
@@ -119,7 +123,7 @@ export const PaymentDetails = (props) => {
                 name="email"
                 className="search-box search-half-width"
                 placeholder="Enter country"
-                onChange={(e) => setCountry(e)}
+                onChange={(e) => setCountry(e.target.value)}
               />
             </div>
           </div>
@@ -133,7 +137,7 @@ export const PaymentDetails = (props) => {
                 name="email"
                 className="search-box search-half-width"
                 placeholder="Enter zip code"
-                onChange={(e) => setZipCode(e)}
+                onChange={(e) => setZipCode(e.target.value)}
               />
             </div>
           </div>
@@ -153,7 +157,7 @@ export const PaymentDetails = (props) => {
 
       <div className="layout-container full-width pad-l-t font-medium">
         <div className="layout-inline h-left pad-l-t">
-            <button className="btn-default" onChange={handlePayment}>
+            <button className="btn-default" onClick={handlePayment}>
               Place Order
             </button>
         </div>

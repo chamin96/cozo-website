@@ -17,6 +17,7 @@ import Cart from "./pages/Cart";
 import WishList from "./pages/WishList";
 import "./index.css";
 import "./App.css";
+import JoinAsProfessional from "./pages/JoinAsProfessional";
 
 export const store = createStore(rootReducer, applyMiddleware(reduxThunk));
 
@@ -34,6 +35,7 @@ ReactDOM.render(
               component={ProductDetail}
             />
             <Route path="/join-as-vendor" component={JoinAsVendor} />
+            <Route path="/join-as-professional" component={JoinAsProfessional} />
             <Route path="/checkout-final" component={CheckoutFinal} />
             <Route path="/checkout" component={Checkout} />
             <Route path="/cart" component={Cart} />
