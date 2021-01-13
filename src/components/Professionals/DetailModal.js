@@ -18,10 +18,10 @@ export const Detail = (props) => {
       style={defaultModelPopup}>
       <div>
         <div className="modal-dialog modal-dialog-scrollable">
-          <div className="modal-content">
+          <div className="modal-content" style={{width: '2000px'}}>
             {/* <!-- Modal Header --> */}
             <div className="modal-header">
-              <button type="button" className="close" data-dismiss="modal">
+              <button type="button" className="close" data-dismiss="modal" onClick={onClose}>
                 &times;
               </button>
             </div>
@@ -60,7 +60,7 @@ export const Detail = (props) => {
                   <nav className="nav-menu d-lg-block">
                     <ul
                       className="layout-container"
-                      style={{ display: "table" }}>
+                      style={{ display: "table", cursor: "pointer"}}>
                       {content.map((element) => {
                         return (
                           <li

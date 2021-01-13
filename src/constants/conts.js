@@ -20,7 +20,7 @@ export const defaultModelPopup = {
       borderRadius: "8px",
       border: "0",
       padding: "0",
-      minWidth: "450px",
+      minWidth: "550px",
       width: "auto",
       maxWidth: "100%"
     }

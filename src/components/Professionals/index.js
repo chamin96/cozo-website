@@ -20,6 +20,10 @@ export const Professionals = (props) => {
         setVisible(true);
     }
 
+    const handleClose = () => {
+      setVisible(false)
+    }
+
   return (
     <section id="" className="carousel-wrap">
       <div className="container">
@@ -34,8 +38,8 @@ export const Professionals = (props) => {
                           data-toggle="modal"
                           data-target="#professionalsInfo">
                           <div onClick={() => handleVisible(item)}>
-                            <img src={item.professional.profile_image_url} alt="" />
-                            <div className="value-color bold">{item.professional.fullName}</div>
+                            <img src="assets/img/clients/client-1.jpg" alt="" />
+                            <div className="value-color bold" style={{cursor: "pointer"}}>{item.professional.fullName}</div>
                             <div className="item-caption-2">By {item.professional.profession}</div>
                             <div className="layout-container full-width pad-m-t">
                               <div className="layout-col caption-color font-small h-left pad-m-l">
@@ -51,7 +55,7 @@ export const Professionals = (props) => {
             </div>
           </div>
         </div>
-        {visible ? <Detail visible={visible} professionalDetail={professionalDetail}/> : <Fragment />}
+        {visible ? <Detail visible={visible} professionalDetail={professionalDetail} onClose={handleClose}/> : <Fragment />}
       </div>
     </section>
   );

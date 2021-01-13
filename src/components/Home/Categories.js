@@ -40,7 +40,7 @@ export const Categories = props => {
                     <div className="col-lg-2 col-md-6 align-items-stretch h-middle" onClick={() => handleCategories(item.sub_category)}>
                     {/* <i className="icon icon-bedroom category-icons"></i> */}
                     <img src={item.image} />
-                    <div className="category-caption active">{item.name}</div>
+                    <div className="category-caption active" style={{cursor: "pointer"}}>{item.name}</div>
                   </div>
                 )
             })

@@ -17,7 +17,7 @@ export const WishListIndex = (props) => {
     return (
       <div
         className="col-lg-6 order-1 order-lg-2"
-        style={{ paddingTop: "100px" }}>
+        style={{ paddingTop: "100px", paddingLeft: "10px"  }}>
         <span> Add items to your wish list</span>
       </div>
     );
@@ -26,7 +26,7 @@ export const WishListIndex = (props) => {
   return (
     <div
       className="col-lg-6 order-1 order-lg-2"
-      style={{ paddingTop: "100px" }}>
+      style={{ paddingTop: "100px", paddingLeft: "97px" }}>
       <div className="layout-container value-color bold full-width pad-m-t pad-m-b">
         <h3 className="bold">Wish List</h3>
       </div>

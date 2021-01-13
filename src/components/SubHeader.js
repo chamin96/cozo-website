@@ -9,14 +9,14 @@ export const SubHeader = (props) => {
           <ul>
             <li className="drop-down">
               <img src="assets/icons/shop by category.svg" />
-              <a href="">Shop by category</a>
+              <a>Shop by category</a>
               <ul>
-                <li>
+                {/* <li>
                   <a href="#">En</a>
                 </li>
                 <li>
                   <a href="#">Ar</a>
-                </li>
+                </li> */}
               </ul>
             </li>
             <li className="hide-li">
