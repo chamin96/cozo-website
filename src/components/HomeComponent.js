@@ -64,7 +64,7 @@ class HomeComponent extends React.Component {
           <section id="demo" className="demo-vid">
             <div className="container demo-container">
               <div className="row">
-                <div className="col-lg-12 align-items-stretch video-box">
+                <div className="col-lg-12 align-items-stretch video-box" style="background-image: url("assets/img/demo_video.png");">
                   <h3>Click here for an instructional video on AR</h3>
                   <a
                     href="https://www.youtube.com/watch?v=jDDaplaOz7Q"
