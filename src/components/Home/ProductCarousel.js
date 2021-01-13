@@ -49,7 +49,9 @@ export const ProductCarousel = (props) => {
                   pathname: "/product-detail",
                   state: item._id,
                 }}>
-                <div className="shop-items"></div>
+                <div className="shop-items">
+                  <img src={item.images[0]} className="shop-items" />
+                </div>
                 <i className="favorite-item fa fa-heart-o active"></i>
                 <i className="icon icon-sales sales-item"></i>
                 <div className="figure">
