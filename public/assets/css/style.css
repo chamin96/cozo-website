@@ -840,7 +840,7 @@ section {
 }
 
 .home {
-    padding: 0 0 60px 0;
+    padding: 25px 0 60px 0;
 }
 
 .home-des {
@@ -1660,7 +1660,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  color: #2D2942b;
+  color: '#2D2942b';
   font-size: 14px;
 }
 
@@ -2561,4 +2561,8 @@ div:focus, a:focus {
 
 #item-category .list-item.active a {
     color: #ffffff;
+}
+
+.shop-by-category {
+  z-index: 1000;
 }

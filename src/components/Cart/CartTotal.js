@@ -42,11 +42,9 @@ export const CartTotal = (props) => {
 
       <div className="layout-container full-width pad-l-t font-medium pad-m-l">
         <div className="layout-col full-width pad-l-t">
-          {/* <Link to="/checkout"> */}
             <button className="btn-default" onClick={handleCheckout}>
               Checkout
             </button>
-          {/* </Link> */}
         </div>
       </div>
     </div>

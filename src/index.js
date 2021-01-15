@@ -18,6 +18,7 @@ import WishList from "./pages/WishList";
 import "./index.css";
 import "./App.css";
 import JoinAsProfessional from "./pages/JoinAsProfessional";
+import ScrollToTop from "./components/ScrollToTop";
 
 export const store = createStore(rootReducer, applyMiddleware(reduxThunk));
 
@@ -25,23 +26,24 @@ ReactDOM.render(
   <Provider store={store}>
     <App>
       <Router>
-        <Switch>
-          <React.Fragment>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/sign-in" component={Authentication} />
-            <Route
-              exact
-              path="/product-detail"
-              component={ProductDetail}
-            />
-            <Route path="/join-as-vendor" component={JoinAsVendor} />
-            <Route path="/join-as-professional" component={JoinAsProfessional} />
-            <Route path="/checkout-final" component={CheckoutFinal} />
-            <Route path="/checkout" component={Checkout} />
-            <Route path="/cart" component={Cart} />
-            <Route path="/wish-list" component={WishList} />
-          </React.Fragment>
-        </Switch>
+        <ScrollToTop>
+          <Switch>
+            <React.Fragment>
+              <Route path="/" exact component={HomePage} />
+              <Route path="/sign-in" component={Authentication} />
+              <Route exact path="/product-detail" component={ProductDetail} />
+              <Route path="/join-as-vendor" component={JoinAsVendor} />
+              <Route
+                path="/join-as-professional"
+                component={JoinAsProfessional}
+              />
+              <Route path="/checkout-final" component={CheckoutFinal} />
+              <Route path="/checkout" component={Checkout} />
+              <Route path="/cart" component={Cart} />
+              <Route path="/wish-list" component={WishList} />
+            </React.Fragment>
+          </Switch>
+        </ScrollToTop>
       </Router>
     </App>
   </Provider>,

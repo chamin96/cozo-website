@@ -4,24 +4,62 @@ import { SubHeader } from "./SubHeader";
 import { Categories } from "../components/Home/Categories";
 import { ProductCarousel } from "./Home/ProductCarousel";
 import { Professionals } from "./Professionals";
+import { getCategories } from "../api/action/ProductAction";
 
 class HomeComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       filterObj: null,
+      category: "",
+      categories: [],
+      subCategories: [],
     };
   }
 
+  componentDidMount() {
+    getCategories().then((res) => {
+      if (res.data.categories) {
+        this.move(res.data.categories, 0, 1);
+      }
+    });
+  }
+
+  move = (arr, old_index, new_index) => {
+    while (old_index < 0) {
+      old_index += arr.length;
+    }
+    while (new_index < 0) {
+      new_index += arr.length;
+    }
+    if (new_index >= arr.length) {
+      var k = new_index - arr.length;
+      while (k-- + 1) {
+        arr.push(undefined);
+      }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    this.setState({ categories: arr, subCategories: arr[0].sub_category });
+    return arr;
+  };
+
   handleFilters = (data) => {
     this.setState({ filterObj: data });
+  };
+
+  selectedCategory = (data) => {
+    this.setState({ category: data });
   };
 
   render() {
     const { match, location, history } = this.props;
     return (
       <div>
-        <SubHeader />
+        <SubHeader
+          searchCategory={this.selectedCategory}
+          categories={this.state.categories}
+          subCategories={this.state.subCategories}
+        />
 
         <main id="main">
           <section id="" className="home">
@@ -40,7 +78,13 @@ class HomeComponent extends React.Component {
             </div>
           </section>
           {location.state != "professional" ? (
-            <Categories filters={this.handleFilters} />
+            <Categories
+              filters={this.handleFilters}
+              searchingCategory={this.state.category}
+              categories={this.state.categories}
+              subCategories={this.state.subCategories}
+              filterObj={this.handleFilters}
+            />
           ) : (
             <Fragment />
           )}
@@ -51,7 +95,12 @@ class HomeComponent extends React.Component {
                 <div className="col-lg-12 align-items-stretch video-box">
                   <div className="bourse-slider arrows--lg slick-slider pos-rel">
                     {location.state != "professional" ? (
-                      <ProductCarousel filterOptions={this.state.filterObj} />
+                      <ProductCarousel
+                        filterOptions={this.state.filterObj}
+                        searchingCategory={this.state.category}
+                        categories={this.state.categories}
+                        subCategories={this.state.subCategories}
+                      />
                     ) : (
                       <Professionals />
                     )}
@@ -64,7 +113,11 @@ class HomeComponent extends React.Component {
           <section id="demo" className="demo-vid">
             <div className="container demo-container">
               <div className="row">
-                <div className="col-lg-12 align-items-stretch video-box" style={{backgroundImage:'url("assets/img/demo_video.png")'}}>
+                <div
+                  className="col-lg-12 align-items-stretch video-box"
+                  style={{
+                    backgroundImage: 'url("assets/img/demo_video.png")',
+                  }}>
                   <h3>Click here for an instructional video on AR</h3>
                   <a
                     href="https://www.youtube.com/watch?v=jDDaplaOz7Q"

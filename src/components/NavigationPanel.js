@@ -8,7 +8,7 @@ class NavigationPanel extends React.Component {
       <header id="header" className="fixed-top">
         <div className="container d-flex align-items-center">
           <Link to="/" className="logo">
-            <img src="assets/img/logo.svg" alt="" className="img-fluid" />
+            <img src="assets/img/logo.png" alt="" className="img-fluid" />
           </Link>
           <form action="" method="post" className="mr-auto pos-rel">
             <input

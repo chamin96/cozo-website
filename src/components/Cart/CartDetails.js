@@ -9,7 +9,7 @@ export const CartDetails = (props) => {
     if (items != undefined) {
         return items.map((item, key) => {
             return (
-              <div className="layout-container full-width">
+              <div className="layout-container full-width" key={key}>
                 <div className="layout-container full-width">
                   <div className="layout-col cart-thumbnail v-middle">
                     <img src="assets/img/bed_1.png" />

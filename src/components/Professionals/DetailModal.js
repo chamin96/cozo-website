@@ -2,6 +2,9 @@ import React, { useState } from "react";
 // import { Modal, Button } from "antd";
 import Modal from "react-modal";
 import { defaultModelPopup } from "../../constants/conts";
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 
 const content = ["About", "Contact Info"];
 
@@ -18,10 +21,14 @@ export const Detail = (props) => {
       style={defaultModelPopup}>
       <div>
         <div className="modal-dialog modal-dialog-scrollable">
-          <div className="modal-content" style={{width: '2000px'}}>
+          <div className="modal-content" style={{ width: "2000px" }}>
             {/* <!-- Modal Header --> */}
             <div className="modal-header">
-              <button type="button" className="close" data-dismiss="modal" onClick={onClose}>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                onClick={onClose}>
                 &times;
               </button>
             </div>
@@ -44,7 +51,7 @@ export const Detail = (props) => {
                   {professionalDetail.professional.fullName}
                 </div>
                 <div className="layout-container h-middle full-width caption-color font-small">
-                {professionalDetail.professional.profession}
+                  {professionalDetail.professional.profession}
                 </div>
                 <div className="layout-container h-middle full-width value-color bold">
                   <span>
@@ -60,7 +67,7 @@ export const Detail = (props) => {
                   <nav className="nav-menu d-lg-block">
                     <ul
                       className="layout-container"
-                      style={{ display: "table", cursor: "pointer"}}>
+                      style={{ display: "table", cursor: "pointer" }}>
                       {content.map((element) => {
                         return (
                           <li
@@ -108,7 +115,7 @@ export const Detail = (props) => {
                     </div>
                     <div className="layout-container full-width pad-m-t caption-color font-small">
                       <div className="layout-col">
-                      {professionalDetail.professional.location}
+                        {professionalDetail.professional.location}
                       </div>
                     </div>
 
@@ -122,17 +129,34 @@ export const Detail = (props) => {
                     </div>
                     <div className="clients">
                       <div className="container main-container">
-                          {professionalDetail.professional.reviews.map((item, key) => {
+                        <OwlCarousel
+                          className="owl-theme"
+                          loop
+                          margin={10}
+                          item={3}
+                          navClass="owl-prev owl-next"
+                          >
+                          {professionalDetail.professional.reviews.map(
+                            (item, key) => {
                               return (
-                                <div className="layout-container full-width h-middle">
-                                <img src="assets/img/clients/client-1.jpg" alt="" />
-                                <div className="value-color bold">Greg Smith</div>
-                                <div className="client-feedback caption-color font-small">
-                                  {item.text}
+                                <div className="item">
+                                  <div className="layout-container full-width h-middle">
+                                    <img
+                                      src="assets/img/clients/client-1.jpg"
+                                      alt=""
+                                    />
+                                    <div className="value-color bold">
+                                      Greg Smith
+                                    </div>
+                                    <div className="client-feedback caption-color font-small">
+                                      {item.text}
+                                    </div>
+                                  </div>
                                 </div>
-                              </div>
-                              )
-                          })}
+                              );
+                            }
+                          )}
+                        </OwlCarousel>
                       </div>
                     </div>
                   </div>
@@ -150,7 +174,9 @@ export const Detail = (props) => {
                     </div>
                   </div>
                   <div className="layout-container full-width pad-m-t caption-color font-small">
-                    <div className="layout-col">{professionalDetail.professional.email}</div>
+                    <div className="layout-col">
+                      {professionalDetail.professional.email}
+                    </div>
                   </div>
 
                   <div className="category-separator"></div>
@@ -161,7 +187,9 @@ export const Detail = (props) => {
                     </div>
                   </div>
                   <div className="layout-container full-width pad-m-t caption-color font-small">
-                    <div className="layout-col">{professionalDetail.professional.phone_number}</div>
+                    <div className="layout-col">
+                      {professionalDetail.professional.phone_number}
+                    </div>
                   </div>
 
                   <div className="category-separator"></div>
@@ -172,7 +200,9 @@ export const Detail = (props) => {
                     </div>
                   </div>
                   <div className="layout-container full-width pad-m-t caption-color font-small">
-                    <div className="layout-col">{professionalDetail.professional.location}</div>
+                    <div className="layout-col">
+                      {professionalDetail.professional.location}
+                    </div>
                   </div>
                 </div>
               )}

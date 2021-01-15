@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getCategories } from "../api/action/ProductAction";
 
 export const SubHeader = (props) => {
+  const { searchCategory, categories } = props;
+  const [categoriesArr, setCategoriesArr] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  useEffect(() => {
+    if (categories) {
+      handleCategories(categories)
+    }
+  }, [categories]);
+
+  const handleCategories = (data) => {
+    let newArr = [];
+    data.forEach((element) => {
+      newArr.push(element.name);
+    });
+    setCategoriesArr(newArr);
+  };
+
   return (
     <section id="hero">
       <div className="container position-relative">
@@ -10,13 +28,23 @@ export const SubHeader = (props) => {
             <li className="drop-down">
               <img src="assets/icons/shop by category.svg" />
               <a>Shop by category</a>
-              <ul>
-                {/* <li>
-                  <a href="#">En</a>
-                </li>
-                <li>
-                  <a href="#">Ar</a>
-                </li> */}
+              <ul className="shop-by-category">
+                {categoriesArr.map((element) => {
+                  return (
+                    <li
+                    data-val="DE"
+                      value={element}
+                      onClick={(e) => {
+                        setSelectedCategory(categoriesArr[e.target.value]);
+                        searchCategory(categoriesArr[e.target.value]);
+                      }
+                      }
+                      style={{ cursor: "pointer", fontWeight: '10px' }}
+                      >
+                      {element}
+                    </li>
+                  );
+                })}
               </ul>
             </li>
             <li className="hide-li">
