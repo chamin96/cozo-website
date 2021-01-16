@@ -32,9 +32,9 @@ class NavigationPanel extends React.Component {
                 </a>
               </li>
               <li>
-                <a href="">
+                <Link to="/sign-in">
                   <span className="header-icons icon icon-profile"></span>
-                </a>
+                </Link>
               </li>
               <li>
                 <Link to="/wish-list">
