@@ -52,7 +52,7 @@ export const SelectedItem = (props) => {
       }
     }
   };
-
+console.log("productDetails", productDetails);
   return (
     <section id="selectedItem" className="home">
       <div className="container">
@@ -75,9 +75,20 @@ export const SelectedItem = (props) => {
               <i className="fa fa-angle-right pad-s-l"></i>
             </a>
           </div>
+          <div className="col-lg-2">
+            <div className="thumbnail">
+              <img src={productDetails?.product?.images[0]} className="active" />
+            </div>
+            <div className="thumbnail pad-l-tb">
+              <img src={productDetails?.product?.images[1]} />
+            </div>
+            <div className="thumbnail pad-m-b">
+              <img src={productDetails?.product?.images[2]} />
+            </div>
+          </div>
           <div className="col-lg-5">
             <div className="item-des">
-              <OwlCarousel className="owl-theme" loop margin={10} items={1}>
+              {/* <OwlCarousel className="owl-theme" loop margin={10} items={1}>
                 {productDetails?.product?.images.map((element) => {
                   return (
                     <div className="item">
@@ -85,7 +96,10 @@ export const SelectedItem = (props) => {
                     </div>
                   );
                 })}
-              </OwlCarousel>
+              </OwlCarousel> */}
+              <img src={productDetails?.product?.images[0]} />
+              {/* <i className="icon icon-AR pos-abs AR-item"></i> */}
+              {/* <i className="icon icon-view-img pos-abs item-search"></i> */}
             </div>
           </div>
 

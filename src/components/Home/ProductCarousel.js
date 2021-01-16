@@ -78,33 +78,36 @@ export const ProductCarousel = (props) => {
     if (data != undefined) {
       return data.map((item, key) => {
         return (
-          <div className="item" key={key}>
-            <Link
-              to={{
-                pathname: "/product-detail",
-                state: item._id,
-              }}>
-              <div className="shop-items">
-                <img src={item.images[0]} className="shop-items" />
-              </div>
-              <i className="favorite-item fa fa-heart-o active"></i>
-              <i className="icon icon-sales sales-item"></i>
-              <div className="figure">
-                <p>{item.name}</p>
-                <div className="item-caption-2">
-                  By {item.vendor.name_of_business}
+          <div className="bourse-slider__item slick-slide">
+            <div className="bs-item-inner pos-rel">
+              {/* <div className="item" key={key}> */}
+              <Link
+                to={{
+                  pathname: "/product-detail",
+                  state: item._id,
+                }}>
+                <div className="shop-items">
+                  <img src={item.images[0]} className="shop-items" />
                 </div>
-                <div className="layout-container full-width pad-m-t">
-                  <div className="layout-col caption-color font-small h-left">
-                    <i className="icon icon-star v-middle"></i>
-                    <span className="v-middle">(4.5)</span>
+                <i className="favorite-item fa fa-heart-o active"></i>
+                <i className="icon icon-sales sales-item"></i>
+                <div className="figure">
+                  <p>{item.name}</p>
+                  <div className="item-caption-2">
+                    By {item.vendor.name_of_business}
                   </div>
-                  <div className="layout-col value-color font-medium bold h-right">
-                    <span className="v-middle">${item.amount}</span>
+                  <div className="layout-container full-width pad-m-t">
+                    <div className="layout-col caption-color font-small h-left">
+                      <i className="icon icon-star v-middle"></i>
+                      <span className="v-middle">(4.5)</span>
+                    </div>
+                    <div className="layout-col value-color font-medium bold h-right">
+                      <span className="v-middle">${item.amount}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           </div>
         );
       });
@@ -113,14 +116,15 @@ export const ProductCarousel = (props) => {
   return (
     <Fragment>
       {products != undefined ? (
-        <OwlCarousel
-          className="owl-theme"
-          loop
-          margin={10}
-          item={3}
-          navClass="owl-prev owl-next">
-          {renderProducts(products)}
-        </OwlCarousel>
+        // <OwlCarousel
+        //   className="owl-theme"
+        //   loop
+        //   margin={10}
+        //   item={3}
+        //   navClass="owl-prev owl-next">
+        //   {renderProducts(products)}
+        // </OwlCarousel>
+        renderProducts(products)
       ) : (
         <Fragment />
       )}

@@ -129,13 +129,13 @@ export const Detail = (props) => {
                     </div>
                     <div className="clients">
                       <div className="container main-container">
-                        <OwlCarousel
+                        {/* <OwlCarousel
                           className="owl-theme"
                           loop
                           margin={10}
                           item={3}
                           navClass="owl-prev owl-next"
-                          >
+                          > */}
                           {professionalDetail.professional.reviews.map(
                             (item, key) => {
                               return (
@@ -156,7 +156,7 @@ export const Detail = (props) => {
                               );
                             }
                           )}
-                        </OwlCarousel>
+                        {/* </OwlCarousel> */}
                       </div>
                     </div>
                   </div>
