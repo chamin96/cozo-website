@@ -24,12 +24,13 @@ export const Detail = (props) => {
       //title="20px to Top"
       style={{ top: 20 }}
       visible={visible}
+      onCancel={onClose}
       footer={null}> 
       <div>
         <div className="modal-dialog modal-dialog-scrollable">
           <div className="modal-content" style={{ width: "2000px" }}>
             {/* <!-- Modal Header --> */}
-            <div className="modal-header">
+            {/* <div className="modal-header">
               <button
                 type="button"
                 className="close"
@@ -37,7 +38,7 @@ export const Detail = (props) => {
                 onClick={onClose}>
                 &times;
               </button>
-            </div>
+            </div> */}
 
             {/* <!-- Modal body --> */}
             <div className="modal-body">
@@ -47,7 +48,7 @@ export const Detail = (props) => {
                     <i className="fa fa-share-alt"></i>
                   </div>
                   <div className="layout-col h-middle">
-                    <img src="assets/img/clients/client-2.jpg" alt="" />
+                    <img src="assets/img/clients/client-2.jpg" style={{ height: '100px', width: "100px"}} alt="" />
                   </div>
                   <div className="layout-col h-left">
                     <i className="fa fa-heart-o"></i>
@@ -80,7 +81,7 @@ export const Detail = (props) => {
                             id="aboutClicked"
                             className={`layout-inline v-middle list-item ${
                               element == "About" ? "list-item-1" : "list-item-2"
-                            } active`}
+                            } ${selectedContent == element ? 'active' : ''}`}
                             value={element}
                             onClick={(e) => setSelectedContent(element)}>
                             {element}
@@ -134,7 +135,7 @@ export const Detail = (props) => {
                       </div>
                     </div>
                     <div className="clients">
-                      <div className="container main-container">
+                      <div className="container">
                         {/* <OwlCarousel
                           className="owl-theme"
                           loop
@@ -142,10 +143,10 @@ export const Detail = (props) => {
                           item={3}
                           navClass="owl-prev owl-next"
                           > */}
-                          {professionalDetail.professional.reviews.map(
+                          {/* {professionalDetail.professional.reviews.map(
                             (item, key) => {
                               return (
-                                <div className="item">
+                                <div className="item"> */}
                                   <div className="layout-container full-width h-middle">
                                     <img
                                       src="assets/img/clients/client-1.jpg"
@@ -155,13 +156,13 @@ export const Detail = (props) => {
                                       Greg Smith
                                     </div>
                                     <div className="client-feedback caption-color font-small">
-                                      {item.text}
+                                      {professionalDetail?.professionals?.professional?.reviews[0].item.text}
                                     </div>
                                   </div>
-                                </div>
-                              );
+                                {/* </div> */}
+                              {/* );
                             }
-                          )}
+                          )} */}
                         {/* </OwlCarousel> */}
                       </div>
                     </div>
