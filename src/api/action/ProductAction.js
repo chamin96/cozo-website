@@ -17,7 +17,6 @@ export const postCreditCard = data => {
 }
 
 export const getProductById = id => {
-    console.log("id", id);
     return axios.get(`${process.env.REACT_APP_API_URL}/products/product/${id}`);
 }
 

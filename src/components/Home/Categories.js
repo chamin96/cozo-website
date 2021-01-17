@@ -114,7 +114,8 @@ export const Categories = (props) => {
             <div className="layout-col mr-auto"></div>
             <button
               className="layout-col filters-btn pos-rel"
-              onClick={handleFilter}>
+              onClick={handleFilter}
+              style={{ float: 'right'}}>
               <i className="icon icon-filters pos-abs filter-pos"></i>
               <span className="filter-text">Filters</span>
             </button>

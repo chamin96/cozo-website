@@ -108,10 +108,10 @@ export const Filters = (props) => {
             onAfterChange={onAfterChange}
           />
         </div>
-        <div className="col-lg-2 col-md-6 align-items-stretch h-middle">
+        {/* <div className="col-lg-2 col-md-6 align-items-stretch h-middle">
           <div className="bold pad-s-b">Filter by AR</div>
           <div className="icon icon-AR"></div>
-        </div>
+        </div> */}
         <div className="col-lg-2 col-md-6 align-items-stretch h-middle">
           <div className="bold pad-s-b">
               <button type="button" className="btn btn-primary" onClick={handleSearch}> Search </button>

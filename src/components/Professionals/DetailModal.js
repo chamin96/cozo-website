@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 // import { Modal, Button } from "antd";
-import Modal from "react-modal";
+// import Modal from "react-modal";
 import { defaultModelPopup } from "../../constants/conts";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
+import { Modal, Button } from "antd";
 
 const content = ["About", "Contact Info"];
 
@@ -13,12 +14,17 @@ export const Detail = (props) => {
   const [selectedContent, setSelectedContent] = useState("About");
 
   return (
-    <Modal
-      isOpen={visible}
-      // onRequestClose={() => this.setState({ showCalender: false })}
-      shouldCloseOnOverlayClick={true}
-      contentLabel="Modal"
-      style={defaultModelPopup}>
+    // <Modal
+    //   isOpen={visible}
+    //   // onRequestClose={() => this.setState({ showCalender: false })}
+    //   shouldCloseOnOverlayClick={true}
+    //   contentLabel="Modal"
+    //   style={defaultModelPopup}>
+       <Modal
+      //title="20px to Top"
+      style={{ top: 20 }}
+      visible={visible}
+      footer={null}> 
       <div>
         <div className="modal-dialog modal-dialog-scrollable">
           <div className="modal-content" style={{ width: "2000px" }}>

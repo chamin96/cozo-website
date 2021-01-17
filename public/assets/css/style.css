@@ -471,7 +471,7 @@ a:hover {
 
 .nav-menu .drop-down:hover > ul {
   opacity: 1;
-  top: 100%;
+  top: 70%;
   visibility: visible;
 }
 
@@ -724,7 +724,7 @@ a:hover {
 --------------------------------------------------------------*/
 section {
   padding: 60px 0;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .section-bg {
@@ -2564,5 +2564,5 @@ div:focus, a:focus {
 }
 
 .shop-by-category {
-  z-index: 1000;
+  padding: 10px;
 }

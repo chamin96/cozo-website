@@ -8,14 +8,14 @@ class Footer extends React.Component {
             <div className="container footer-border footer-top">
                 <div className="row">
                 <div className="col-lg-4 col-md-6 footer-contact">
-                    <img src="assets/img/logo.svg" className="footer-logo"/>
+                    <img src="assets/img/logo.png" className="footer-logo"/>
                     <div className="social-media">
                     <img src="assets/icons/facebook.svg"/>
                     <img src="assets/icons/twitter.svg" className="pad-m-l"/>
                     <img src="assets/icons/instagram.svg" className="pad-m-l"/>
                     </div>
                     <div>
-                    <span className="copyright-msg">@copyright 2020. All Rights Reserved</span>
+                    <span className="copyright-msg">© Copyright 2020. All Rights Reserved</span>
                     </div>
                 </div>
 
